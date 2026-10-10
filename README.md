@@ -1,57 +1,52 @@
 # QR Code Generator with Logo Overlay
 
-This Python script generates a QR code with a specified URL or text and overlays a logo in the center. It uses the `qrcode` and `PIL` (Pillow) libraries to achieve this.
+This Python script generates a QR code from a URL or text. You can optionally add a logo in the center, choose the QR code color, and set the output file name.
 
 ## Prerequisites
 
 Make sure you have Python installed on your machine. Install the required libraries using the following command:
 
 ```
-pip install qrcode[pil]
+pip install -r requirements.txt
 ```
 
 ## Usage
 
-1. Replace `Logo_link` with the path to your logo image.
+Run the script from this directory with a URL or text supplied through `--url`:
 
-```
-Logo_link = 'path/to/your/logo.png'
-```
-
-2. Adjust the `basewidth` variable to set the desired width for the QR code.
-
-```
-basewidth = 100
+```bash
+python qrcode-gen.py --url "https://example.com"
 ```
 
-3. Set the `url` variable to the desired URL or text for the QR code.
+The command above creates `qrcode.png` in the current directory.
 
-```
-url = 'https://example.com'
+### Arguments
+
+- `--url` (required): The URL or text to encode.
+- `--logo`: Path to an image file to place in the center of the QR code.
+- `--color`: QR code fill color. Defaults to `black`. Pillow color names and color values such as `#1d4ed8` are supported.
+- `--destination`: Output file name without the `.png` extension. Defaults to `qrcode`.
+
+### Examples
+
+Generate a QR code with a custom color:
+
+```bash
+python qrcode-gen.py --url "https://example.com" --color red --destination example-red
 ```
 
-4. Optionally, change the `QRcolor` variable to set the fill color of the QR code. You can add color code html for the colors 
+Add a logo and save the result with a custom name:
 
-```
-QRcolor = 'black'
-```
-
-5. Run the script:
-
-```
-python python .\qrcode-gen.py
+```bash
+python qrcode-gen.py --url "https://github.com/helloSamTee/qr-code-generator" --logo "path/to/githublogo.png" --color red --destination testing
 ```
 
-The generated QR code with the logo overlay will be saved as `mygithubqr.png`.
+This creates `testing.png`. The logo is resized and placed in the center of the QR code.
 
 ## Example
 
 ![mygithubqr](https://github.com/yaserrati/qr-code-generator/assets/88887542/fd046b7f-80a3-45b1-ac02-d1e64fef214e)
 
-
-## Customization
-
-Feel free to customize the script according to your needs. If you encounter any issues or have suggestions, please open an [issue](https://github.com/your_username/your_repository/issues).
 
 ## Dependencies
 
